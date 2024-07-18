@@ -1,12 +1,21 @@
-import React from 'react'
-import Home from './pages/Home/Home'
+import React from "react";
+import Home from "./pages/Home/Home";
+import Login from "./pages/Login/Login";
+import SignUp from "./pages/SignUp/SignUp";
+import { BrowserRouter, Router, Routes, Route } from "react-router-dom";
 
 const App = () => {
-  return (
-    <>
-    <Home />
-    </>
-  )
-}
+  const routes = (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/dashboard" exact element={<Home />} />
+        <Route path="/login" exact element={<Login />} />
+        <Route path="/signUp" exact element={<SignUp />} />
+      </Routes>
+    </BrowserRouter>
+  );
 
-export default App
+  return <>{routes}</>;
+};
+
+export default App;
