@@ -12,7 +12,7 @@ const Note = require("./models/note.model");
 mongoose.connect(process.env.connection_string);
 const app = express();
 
-const __dirname=path.resolve();
+// const __dirname=path.resolve();
 
 app.use(express.json());
 app.use(
