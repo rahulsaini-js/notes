@@ -128,7 +128,7 @@ const Home = () => {
       );
 
       if (response.data && response.data.note) {
-        showToastMessage("Note Pinned Successfully");
+        showToastMessage("Pinned changed");
         getAllNotes();
       }
     } catch (error) {
