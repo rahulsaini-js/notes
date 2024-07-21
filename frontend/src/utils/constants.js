@@ -1,1 +1,1 @@
-export const BASE_URL="https://note-backend-git-main-rahuls-projects-98565912.vercel.app/"
+export const BASE_URL="http://localhost:8000"
