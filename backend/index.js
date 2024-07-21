@@ -4,7 +4,6 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 const jwt = require("jsonwebtoken");
 const { authenticateToken } = require("./utilities");
-const path =require('path')
 
 const User = require("./models/user.model");
 const Note = require("./models/note.model");
@@ -12,7 +11,6 @@ const Note = require("./models/note.model");
 mongoose.connect(process.env.connection_string);
 const app = express();
 
-// const __dirname=path.resolve();
 
 app.use(express.json());
 app.use(
@@ -312,10 +310,7 @@ app.get("/search-notes", authenticateToken, async (req, res) => {
   }
 });
 
-app.use(express.static(path.join(__dirname,'/frontend/dist')))
-app.get('*',(req,res)=>{
-  res.sendFile(path.join(__dirname,'frontend','dist','index.html'))
-})
+
 
 app.listen(8000);
 module.exports = app;
