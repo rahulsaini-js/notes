@@ -95,11 +95,11 @@ const AddEditNotes = ({
         <MdClose className="text-xl text-slate-400" />
       </button>
       <div className="flex flex-col gap-2">
-        <label className="input-label">TITLE</label>
+        <label className="input-label text-blue-600 font-extrabold">TITLE</label>
         <input
           type="text"
-          className="text-2xl text-slate-950 outline-none"
-          placeholder="Go To Gys At 5"
+          className="text-2xl text-blue-950 outline-none"
+          placeholder="enter title...."
           value={title}
           onChange={({ target }) => {
             setTitle(target.value);
@@ -107,11 +107,11 @@ const AddEditNotes = ({
         />
       </div>
       <div className="flex flex-col gap-2 mt-4">
-        <label className="input-label">CONTENT</label>
+        <label className="input-label text-blue-600 font-extrabold">CONTENT</label>
         <textarea
           type="text"
           className="text-sm text-slate-958 outline-none bg-slate-50 p-2 rounded"
-          placeholder="Content"
+          placeholder="Content....."
           rows={10}
           value={content}
           onChange={({ target }) => {
@@ -120,7 +120,7 @@ const AddEditNotes = ({
         />
       </div>
       <div className="mt-3">
-        <label className="input-label">Tags</label>
+        <label className="input-label text-blue-600 font-extrabold">TAGS</label>
         <TagInput tags={tags} setTags={setTags} />
       </div>
       {error && <p className="text-red-500 text-xs pt-4">{error}</p>}
