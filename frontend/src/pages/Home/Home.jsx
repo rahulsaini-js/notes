@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { MdAdd } from "react-icons/md";
 import AddEditNotes from "./AddEditNotes";
 import Modal from "react-modal";
-import axiosInstance from "../../utils/axiosInstance"
+import axiosInstance from "../../utils/axiosInstance";
 
 const Home = () => {
   const [openAddEditModal, setOpenAddEditModal] = useState({
@@ -33,6 +33,8 @@ const Home = () => {
     }
   };
 
+  //get all notes
+
   useEffect(() => {
     getUserInfo();
     return () => {};
@@ -40,7 +42,7 @@ const Home = () => {
 
   return (
     <>
-      <Navbar userInfo={userInfo}/>
+      <Navbar userInfo={userInfo} />
       <div className=" container mx-auto">
         <div className="grid grid-cols-3 gap-4 mt-8">
           <NoteCard
