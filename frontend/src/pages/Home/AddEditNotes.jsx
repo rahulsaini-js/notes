@@ -3,7 +3,13 @@ import TagInput from "../../components/Input/TagInput";
 import { MdClose } from "react-icons/md";
 import axiosInstance from "../../utils/axiosInstance";
 
-const AddEditNotes = ({ noteData, getAllNotes, type, onClose }) => {
+const AddEditNotes = ({
+  noteData,
+  getAllNotes,
+  type,
+  onClose,
+  showToastMessage,
+}) => {
   const [title, setTitle] = useState(noteData?.title || "");
   const [content, setContent] = useState(noteData?.content || "");
   const [tags, setTags] = useState(noteData?.tags || []);
@@ -20,6 +26,7 @@ const AddEditNotes = ({ noteData, getAllNotes, type, onClose }) => {
       });
 
       if (response.data && response.data.note) {
+        showToastMessage("Note Added Successfully");
         getAllNotes();
         onClose();
       }
@@ -46,6 +53,7 @@ const AddEditNotes = ({ noteData, getAllNotes, type, onClose }) => {
       });
 
       if (response.data && response.data.note) {
+        showToastMessage("Note Updated Successfully");
         getAllNotes();
         onClose();
       }
@@ -120,7 +128,7 @@ const AddEditNotes = ({ noteData, getAllNotes, type, onClose }) => {
         className="btn-primary font-medium mt-5 p-2"
         onClick={handleAddNote}
       >
-        {type === "Edit" ? "UPDATE" : "ADD"}
+        {type === "edit" ? "UPDATE" : "ADD"}
       </button>
     </div>
   );
