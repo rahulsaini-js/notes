@@ -11,15 +11,26 @@ const Note = require("./models/note.model");
 mongoose.connect(process.env.connection_string);
 const app = express();
 
-
 app.use(express.json());
-app.use(
-  cors({
-    origin: "*",
-  })
-);
-app.get("/", (req, res) => {
-  res.json({ data: "hello" });
+
+const corsOptions = {
+  origin: "*",
+  methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
+  allowedHeaders: [
+    "Content-Type",
+    "Authorization",
+    "Access-Control-Allow-Methods",
+    "Access-Control-Allow-Origin",
+  ],
+  credentials: true,
+};
+
+app.use(cors(corsOptions));
+
+app.options("*", cors(corsOptions)); // Enable pre-flight for all routes
+
+app.post("/", (req, res) => {
+  res.json({ message: "Login successful" });
 });
 
 // Create Account
@@ -279,8 +290,8 @@ app.put("/update-note-pinned/:noteId", authenticateToken, async (req, res) => {
 
 // Search Notes
 app.get("/search-notes", authenticateToken, async (req, res) => {
-  const {user} = req.user;
-  const {query} = req.query;
+  const { user } = req.user;
+  const { query } = req.query;
 
   if (!query) {
     return res
@@ -309,8 +320,6 @@ app.get("/search-notes", authenticateToken, async (req, res) => {
     });
   }
 });
-
-
 
 app.listen(8000);
 module.exports = app;
